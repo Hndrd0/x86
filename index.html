@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emulator UI</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="libv86.js"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="controls" aria-label="Emulator controls">
+      <label for="os-select">Operating system</label>
+      <select id="os-select">
+        <option value="images/freedos.iso">FreeDOS</option>
+        <option value="images/tinycore.iso">Tiny Core</option>
+      </select>
+      <button id="start-btn" type="button">Start</button>
+    </section>
+
+    <section id="screen" class="screen" aria-label="Emulator display"></section>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
