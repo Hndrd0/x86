@@ -4,6 +4,8 @@
 */
 
 let emulator;
+const BIOS_URL = "bios/seabios.bin";
+const VGA_BIOS_URL = "bios/vgabios.bin";
 
 const screen = document.getElementById("screen");
 const osSelect = document.getElementById("os-select");
@@ -15,8 +17,13 @@ function setStatus(message) {
 }
 
 startButton.addEventListener("click", () => {
+  if (emulator) {
+    setStatus("Emulator is already running.");
+    return;
+  }
+
   if (typeof V86 !== "function") {
-    setStatus("Emulator runtime not found. Make sure libv86.js is available.");
+    setStatus("Unable to load emulator. Please refresh and try again.");
     return;
   }
 
@@ -25,11 +32,12 @@ startButton.addEventListener("click", () => {
 
   emulator = new V86({
     screen_container: screen,
-    bios: { url: "bios/seabios.bin" },
-    vga_bios: { url: "bios/vgabios.bin" },
+    bios: { url: BIOS_URL },
+    vga_bios: { url: VGA_BIOS_URL },
     cdrom: { url: osSelect.value },
     autostart: true,
   });
 
+  startButton.disabled = true;
   setStatus("Emulator started.");
 });
