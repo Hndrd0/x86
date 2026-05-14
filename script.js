@@ -27,8 +27,8 @@ startButton.addEventListener("click", () => {
     return;
   }
 
-  setStatus("Starting emulator...");
   screen.innerHTML = "";
+  setStatus("Starting emulator...");
 
   emulator = new V86({
     screen_container: screen,
