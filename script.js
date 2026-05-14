@@ -23,11 +23,11 @@ startButton.addEventListener("click", () => {
   }
 
   if (typeof V86 !== "function") {
-    setStatus("Unable to load emulator. Please refresh and try again.");
+    setStatus("Unable to load the emulator runtime. Please refresh and try again.");
     return;
   }
 
-  screen.innerHTML = "";
+  screen.replaceChildren();
   setStatus("Starting emulator...");
 
   emulator = new V86({
